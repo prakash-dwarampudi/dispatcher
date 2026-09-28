@@ -1,0 +1,36 @@
+1. Download and install Apache 2.2
+2. Download dispatcher-apache2.2 from adobe website.
+3. unzip the folder to get disp_apache2.2.dll.
+4. Place the dll file in modules directory of apache installation.
+5. Create dispatcher.any file in conf directory of apache installation.
+6. Edit httpd.conf folder to add the following lines to integrate dispatcher into Apache.
+
+# Load Dispatcher Module
+LoadModule dispatcher_module modules/disp_apache2.4.dll
+
+<IfModule disp_apache2.4.c>
+  # Location of dispatcher.any
+  DispatcherConfig conf/dispatcher.any
+  
+  # Location of dispatcher log file
+  DispatcherLog logs/dispatcher.log
+  
+  # Log level: 0 (Error), 1 (Warn), 2 (Info), 3 (Debug), 4 (Trace)
+  DispatcherLogLevel 3
+  
+  # Decline requests for uncached paths or forward to AEM
+  DispatcherNoServerBell Off
+  DispatcherUseProcessedURL 0
+  DispatcherPassError 0
+</IfModule>
+
+<Directory "C:/Apache24/htdocs">
+  # Enable Dispatcher Handler for incoming requests
+  SetHandler dispatcher-handler
+  Options Indexes FollowSymLinks
+  AllowOverride None
+  Require all granted
+</Directory>
+
+
+7. start apache using >http start
