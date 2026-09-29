@@ -1,0 +1,28 @@
+/farms
+  {
+  /website 
+    {  
+    /renders
+      {
+      /rend01
+        {
+			# Hostname or IP of the render
+			/hostname "127.0.0.1"
+			# Port of the render
+			/port "4503"
+			# Connect timeout in milliseconds, 0 to wait indefinitely
+			# /timeout "0"
+        }
+		
+		 /rend02
+        {
+			# Hostname or IP of the render
+			/hostname "127.0.0.1"
+			# Port of the render
+			/port "4504"
+			# Connect timeout in milliseconds, 0 to wait indefinitely
+			# /timeout "0"
+        }
+      }
+	}
+}
